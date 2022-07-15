@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calci App</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+      .container{
+        border:1px solid white ;
+        width:130px;
+        margin:auto;
+        text-align:center;
+        border-radius:2px;
+        margin-top:50px;
+        background-color:rgba(53, 51, 51, 0.473) ;
+
+      }   
+      
+      table{
+        margin:auto;
+      }
+      
+      button{
+           height:30px;
+           width: 30px;
+           border: 1px solid white;
+           border-radius: 2px;
+
+      }
+
+      button:hover{
+        background-color: rgb(229, 173, 255);
+        border:none;
+        transition: 0.2s;
+        border-radius: 2px;
+        cursor:pointer;
+      }
+
+      #screen{
+        width:120px;
+        border:none;
+        height:30px;
+        margin-bottom: 5px;
+        border-radius: 10px solid white;
+        background-color: white;
+        color:black;
+        margin:auto;
+        font-size:15px;
+        overflow: hidden;
+
+
+      }
+
+      .container h8{
+
+        font-size: 10px;
+        
+      }
+
+
+      
+    </style>
+
+</head>
+
+<body>
+  
+
+    <div class="container">
+        <h8> Calculator </h8>
+        
+        <p type="text" name="screen" id="screen"></p>
+        <div class="calculator">
+            
+            <table>
+                <tr>
+                  <td><button type="button">(</button></td>
+                  <td><button type="button">)</button></td>
+                  <td><button type="button">C</button></td>
+                  <td><button type="button">%</button></td>
+                </tr>
+             
+                <tr>
+                    <td><button type="button">7</button></td>
+                    <td><button type="button">8</button></td>
+                    <td><button type="button">9</button></td>
+                    <td><button type="button">x</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button">4</button></td>
+                    <td><button type="button">5</button></td>
+                    <td><button type="button">6</button></td>
+                    <td><button type="button">-</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button">1</button></td>
+                    <td><button type="button">2</button></td>
+                    <td><button type="button">3</button></td>
+                    <td><button type="button">+</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button">/</button></td>
+                    <td><button type="button">0</button></td>
+                    <td><button type="button">.</button></td>
+                    <td><button type="button">=</button></td>
+                </tr>
+              </table>
+
+
+        </div>
+
+    </div>
+<script>
+let screen = document.getElementById('screen');
+let buttons =document.querySelectorAll("button");
+let screenValue='';
+for (item of buttons)
+{
+    item.addEventListener("click",(e)=>{
+        buttonText=e.target.innerText;
+
+        if (buttonText == "x"){
+            buttonText= "*";
+            screenValue+=buttonText;
+            
+        }
+        else if (buttonText == "=" ){
+          screenValue= eval(screenValue);
+          
+        }
+        else if (buttonText == "C"){
+          screenValue='';
+         
+        }
+        else{
+          screenValue+=buttonText;
+          
+        }
+       screen.innerHTML= screenValue;   
+
+    })
+  }
+
+  for (item of buttons){
+    item.addEventListener("keydown",(e)=>{
+     
+            
+        if (e.keyCode == 107){
+            buttonText= "+";
+            screenValue+=buttonText;
+            
+        }
+        if (e.keyCode == 109){
+            buttonText= "-";
+            screenValue+=buttonText;
+            
+        }
+        if (e.keyCode == 106){
+            buttonText= "*";
+            screenValue+=buttonText;
+            
+        }
+        if (e.keyCode == 111){
+            buttonText= "/";
+            screenValue+=buttonText;
+            
+        }
+        if (e.keyCode == 110){
+            buttonText= ".";
+            screenValue+=buttonText;
+            
+        }
+        if (e.keyCode >= 96 && e.keyCode <= 105){
+            buttonText= e.keyCode-96;
+            screenValue+=buttonText;
+        }
+
+        
+        screen.innerHTML= screenValue; 
+    })
+
+
+
+    
+}
+
+</script>
+<script src="https://kit.fontawesome.com/590f303e20.js" crossorigin="anonymous"></script>
+  
+     
+</body>
+</html>
